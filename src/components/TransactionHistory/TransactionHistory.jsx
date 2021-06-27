@@ -8,6 +8,7 @@ import {
   TransactionTh,
   TransactionBody,
 } from "./TransactionHistory.styles";
+import PropTypes from "prop-types";
 
 function TransactionHistory() {
   return (
@@ -20,16 +21,23 @@ function TransactionHistory() {
         </TransactionTr>
       </TransactionHead>
       <TransactionBody>
-        {transactions.map((transaction) => (
-          <TransactionTr key={transaction.id}>
-            <TransactionTh>{transaction.type}</TransactionTh>
-            <TransactionTh>{transaction.amount}</TransactionTh>
-            <TransactionTh>{transaction.currency}</TransactionTh>
+        {transactions.map(({ id, type, amount, currency }) => (
+          <TransactionTr key={id}>
+            <TransactionTh>{type}</TransactionTh>
+            <TransactionTh>{amount}</TransactionTh>
+            <TransactionTh>{currency}</TransactionTh>
           </TransactionTr>
         ))}
       </TransactionBody>
     </TransactionTable>
   );
 }
+
+TransactionHistory.propTypes = {
+  id: PropTypes.node,
+  type: PropTypes.string,
+  amount: PropTypes.number,
+  currency: PropTypes.string,
+};
 
 export default TransactionHistory;

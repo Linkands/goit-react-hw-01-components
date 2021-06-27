@@ -9,6 +9,7 @@ import {
   StatisticsLabel,
   StatisticsPercentage,
 } from "./Statistics.styles";
+import PropTypes from "prop-types";
 
 function Statistics() {
   return (
@@ -30,5 +31,11 @@ function Statistics() {
     </StatisticsSection>
   );
 }
+
+Statistics.propTypes = {
+  id: PropTypes.node,
+  label: PropTypes.node,
+  percentage: PropTypes.number,
+};
 
 export default Statistics;
